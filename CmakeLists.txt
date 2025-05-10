@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Tên dự án
+project(MongoDBCppExample)
+
+# Yêu cầu C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Tìm thư viện mongocxx và bsoncxx đã cài đặt
+find_package(libmongocxx REQUIRED)
+find_package(libbsoncxx REQUIRED)
+
+# Thêm file nguồn của bạn
+add_executable(mongo_example main.cpp)
+
+# Liên kết thư viện
+target_link_libraries(mongo_example
+    PRIVATE
+        libmongocxx::mongocxx
+        libbsoncxx::bsoncxx
+)
